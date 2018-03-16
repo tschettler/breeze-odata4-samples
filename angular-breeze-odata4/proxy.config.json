@@ -1,0 +1,11 @@
+{
+    "/api": {
+        "target": "http://services.odata.org",
+        "secure": false,
+        "logLevel": "debug",
+        "pathRewrite": {
+          "^/api": ""
+        },
+        "changeOrigin": true
+    }
+}
