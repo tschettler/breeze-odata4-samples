@@ -15,11 +15,11 @@ export class AppComponent {
   public entityType: EntityType = null;
   public entityTypes: EntityType[] = [];
   public data: any[];
-  public endpoints: { name: string, endpoint: string }[] = [
+  public endpoints: { name: string,  endpoint: string }[] = [
     { name: 'Northwind', endpoint: 'V4/Northwind/Northwind.svc' },
     // breeze.js needs PR #217 for these samples to work
-    /*     { name: 'Products', endpoint: 'V4/OData/OData.svc' },
-        { name: 'TripPin', endpoint: 'V4/(S(jndgbgy2tbu1vjtzyoei2w3e))/TripPinServiceRW' },
+         { name: 'Products', endpoint: 'V4/OData/OData.svc' },
+    /*    { name: 'TripPin', endpoint: 'V4/(S(jndgbgy2tbu1vjtzyoei2w3e))/TripPinServiceRW' },
         { name: 'TripPin RESTier', endpoint: 'TripPinRESTierService/(S(gzxszdjtr4rxshzgv3mlsys3))' } */
   ];
 
@@ -36,6 +36,7 @@ export class AppComponent {
 
     const ds = <OData4DataService>config.getAdapterInstance('dataService', 'OData4');
     ds.metadataAcceptHeader = 'application/xml';
+    ds.headers['x-requested-with'] = 'XMLHttpRequest';
 
     if (this.endpoints.length === 1) {
       this.selectedEndpoint = this.endpoints[0].endpoint;
@@ -53,6 +54,7 @@ export class AppComponent {
     }
 
     this.manager = new EntityManager(`api/${endpoint}`);
+    // TODO: Include use of http://odatasampleservices.azurewebsites.net/V4/OData/OData.svc/$metadata
 
     this.manager.fetchMetadata().then(() => {
       this.entityTypes = <EntityType[]>this.manager.metadataStore.getEntityTypes()

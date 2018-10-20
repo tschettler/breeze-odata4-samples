@@ -1,11 +1,11 @@
 {
     "/api": {
-        "target": "http://services.odata.org",
+        "target": "http://cors-anywhere.herokuapp.com/http://services.odata.org",
         "secure": false,
+        "changeOrigin": true,
         "logLevel": "debug",
         "pathRewrite": {
           "^/api": ""
-        },
-        "changeOrigin": true
+        }
     }
 }

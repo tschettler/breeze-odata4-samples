@@ -27,7 +27,7 @@
     "@angular/router": "^5.2.10",
     "breeze-bridge-angular": "^4.0.2",
     "breeze-client": "^1.7.0",
-    "breeze-odata4": "^0.9.12",
+    "breeze-odata4": "file:..\\..\\breeze-odata4-0.9.13.tgz",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
